@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MOB Deck</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="welcome">
+    <section class="welcome-command">
+      <img class="welcome-mark" src="assets/mobdeck-mark.png" alt="MOB Deck">
+      <div class="welcome-wordmark">
+        <span>MOB</span>
+        <strong>DECK</strong>
+      </div>
+      <p class="welcome-kicker">Biblioteca local</p>
+      <h1>Central de jogos e apps</h1>
+      <p class="welcome-copy">Organize, escolha e abra tudo em uma interface feita para tela cheia.</p>
+
+      <div class="actions">
+        <button id="autoScanBtn"><span>&#9672;</span> Buscar automaticamente</button>
+        <button id="manualScanBtn"><span>&#9635;</span> Escolher pasta</button>
+        <button id="mobileQrBtn" type="button"><span>QR</span> Mobile / Wake-on-LAN</button>
+      </div>
+
+      <span id="status">Pronto para comecar.</span>
+    </section>
+
+    <section class="welcome-showcase" aria-label="Manual rapido de atalhos">
+      <div class="showcase-guide">
+        <div class="guide-card guide-card-one">
+          <span>G</span>
+          <strong>Jogos</strong>
+          <small>abre a biblioteca</small>
+        </div>
+        <div class="guide-card guide-card-two">
+          <span>A</span>
+          <strong>Apps</strong>
+          <small>mostra instalados</small>
+        </div>
+        <div class="guide-card guide-card-three">
+          <span>C</span>
+          <strong>Catalogo</strong>
+          <small>instalar utilitarios</small>
+        </div>
+        <div class="guide-card guide-card-four">
+          <span>?</span>
+          <strong>Manual</strong>
+          <small>atalhos e controle</small>
+        </div>
+      </div>
+      <div class="showcase-dock">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+  </main>
+
+  <script src="src/app.js"></script>
+</body>
+</html>

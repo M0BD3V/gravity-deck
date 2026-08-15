@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="wake_pc"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_wake_pc_short"
+        android:shortcutLongLabel="@string/shortcut_wake_pc_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="moblauncher://wake-pc" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="game_mode"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_game_mode_short"
+        android:shortcutLongLabel="@string/shortcut_game_mode_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="moblauncher://game-mode" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="start_stream"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_stream_short"
+        android:shortcutLongLabel="@string/shortcut_stream_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="moblauncher://start-stream" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="shutdown_pc"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_shutdown_short"
+        android:shortcutLongLabel="@string/shortcut_shutdown_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="moblauncher://shutdown-pc" />
+    </shortcut>
+</shortcuts>

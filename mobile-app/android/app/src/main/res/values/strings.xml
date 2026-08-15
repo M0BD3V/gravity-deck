@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MOB Deck Companion</string>
+    <string name="title_activity_main">MOB Deck Companion</string>
+    <string name="package_name">com.mob.mobdeck.companion</string>
+    <string name="custom_url_scheme">moblauncher</string>
+    <string name="shortcut_wake_pc_short">Ligar PC</string>
+    <string name="shortcut_wake_pc_long">Ligar PC pelo MOB Deck</string>
+    <string name="shortcut_game_mode_short">Modo jogo</string>
+    <string name="shortcut_game_mode_long">Iniciar modo jogo no MOB Deck</string>
+    <string name="shortcut_stream_short">Streaming</string>
+    <string name="shortcut_stream_long">Iniciar streaming do PC</string>
+    <string name="shortcut_shutdown_short">Desligar PC</string>
+    <string name="shortcut_shutdown_long">Desligar PC pelo MOB Deck</string>
+</resources>

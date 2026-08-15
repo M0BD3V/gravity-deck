@@ -1,0 +1,11 @@
+{
+  "appId": "com.mob.mobdeck.companion",
+  "appName": "MOB Deck Companion",
+  "webDir": "www",
+  "server": {
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

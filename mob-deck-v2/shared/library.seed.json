@@ -1,0 +1,29 @@
+[
+  {
+    "id": "rdr2",
+    "title": "Red Dead Redemption 2",
+    "source": "Rockstar",
+    "status": "Pronto no PC",
+    "cover": "/covers/Red Dead Redemption 2.png",
+    "accent": "#d94f30",
+    "lastPlayedLabel": "Recente"
+  },
+  {
+    "id": "watchdogs2",
+    "title": "Watch Dogs 2",
+    "source": "Ubisoft Connect",
+    "status": "Gravity Stream testavel",
+    "cover": "/covers/watchdogs2.png",
+    "accent": "#21b6d7",
+    "lastPlayedLabel": "Ultima sessao hoje"
+  },
+  {
+    "id": "start",
+    "title": "START",
+    "source": "Local",
+    "status": "Atalho local",
+    "cover": "/covers/START.png",
+    "accent": "#68d391",
+    "lastPlayedLabel": "Novo"
+  }
+]

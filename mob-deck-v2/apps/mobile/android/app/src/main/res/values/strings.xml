@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Gravity Mobile</string>
+    <string name="title_activity_main">Gravity Mobile</string>
+    <string name="package_name">com.mobstudios.gravitymobile</string>
+    <string name="custom_url_scheme">com.mobstudios.gravitymobile</string>
+</resources>

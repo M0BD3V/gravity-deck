@@ -1,0 +1,101 @@
+{
+  "name": "gravity-deck-v2",
+  "private": true,
+  "version": "0.0.10",
+  "description": "Gravity Deck desktop host and mobile companion by Mob Studios",
+  "type": "module",
+  "main": "apps/desktop/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev:local": "vite --host 127.0.0.1 --port 5173",
+    "desktop:dev": "concurrently -k \"npm:dev:local\" \"wait-on http://127.0.0.1:5173 && electron apps/desktop/main.cjs\"",
+    "desktop:start": "electron apps/desktop/main.cjs",
+    "mobile:dev": "vite --config apps/mobile/vite.config.ts --host 127.0.0.1 --port 5174",
+    "mobile:build": "tsc -p apps/mobile/tsconfig.json && vite build --config apps/mobile/vite.config.ts",
+    "mobile:sync": "npm run mobile:build && cap sync android",
+    "mobile:apk": "npm run mobile:sync && cd apps/mobile/android && gradlew.bat assembleDebug",
+    "build": "tsc -b && vite build",
+    "build:apk": "npm run mobile:apk",
+    "build:win": "npm run build && electron-builder --win nsis --x64",
+    "build:release": "npm run build:win && npm run build:apk",
+    "check": "npm run lint && npm run test:host && npm run build && npm run mobile:build",
+    "lint": "oxlint",
+    "test:host": "node --test tests/*.test.cjs",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.mobstudios.gravitydeck",
+    "productName": "Gravity Deck",
+    "asar": false,
+    "directories": {
+      "output": "release/desktop"
+    },
+    "files": [
+      "dist/**/*",
+      "apps/desktop/**/*",
+      "shared/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../src/scanner",
+        "to": "legacy-scanner",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../src/catalog",
+        "to": "catalog",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "public/brand/mobdeck-mark.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Gravity-Deck-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/barcode-scanner": "^3.0.2",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "capacitor-secure-storage-plugin": "^0.13.0",
+    "lucide-react": "^1.22.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "concurrently": "^10.0.3",
+    "electron": "^42.5.1",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "wait-on": "^9.0.10"
+  },
+  "author": "Mob Studios"
+}

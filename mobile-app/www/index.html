@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOB Deck Companion</title>
+  <link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+  <main class="mobile-shell">
+    <header class="mobile-topbar">
+      <img src="./assets/mobdeck-mark.png" alt="MOB Deck" class="mobile-mark">
+      <div>
+        <p class="mobile-eyebrow">Companion Android</p>
+        <h1>MOB Deck</h1>
+      </div>
+      <span id="connectionState" class="connection-pill">Offline</span>
+    </header>
+
+    <section id="pairPanel" class="pair-panel">
+      <div>
+        <h2>Conectar ao PC</h2>
+        <p>Leia o QR exibido no MOB Deck do computador uma vez. Depois disso, o login fica salvo e voce pode reconectar pelo endereco do PC.</p>
+      </div>
+
+      <form id="pairForm" class="pair-form">
+        <label>
+          <span>Endereco do PC</span>
+          <input id="serverInput" autocomplete="url" inputmode="url" placeholder="192.168.1.100:8123">
+        </label>
+        <button type="submit">Conectar</button>
+      </form>
+      <button id="scanQrButton" type="button" class="secondary-action">Ler QR do Desktop</button>
+
+      <p id="pairMessage" class="pair-message"></p>
+    </section>
+
+    <section id="libraryPanel" class="library-panel is-hidden">
+      <div class="library-heading">
+        <div>
+          <p class="mobile-eyebrow">Controle do PC</p>
+          <h2 id="libraryTitle">Jogos</h2>
+        </div>
+        <div class="library-actions">
+          <button id="changePcButton" type="button" class="icon-button" aria-label="Trocar PC">PC</button>
+          <button id="refreshButton" type="button" class="icon-button" aria-label="Atualizar biblioteca">&#8635;</button>
+          <button id="settingsButton" type="button" class="icon-button" aria-label="Configuracoes">&#9881;</button>
+        </div>
+      </div>
+
+      <nav class="mobile-tabs" aria-label="Biblioteca">
+        <button type="button" class="mobile-tab is-active" data-tab="games"><span class="tab-icon">&#9654;</span>Jogos</button>
+        <button type="button" class="mobile-tab" data-tab="apps"><span class="tab-icon">&#9638;</span>Apps</button>
+      </nav>
+
+      <button id="offlineWakeButton" type="button" class="offline-wake is-hidden">Ligar PC salvo</button>
+
+      <div id="gamesList" class="games-list"></div>
+      <div id="appsList" class="games-list is-hidden"></div>
+
+      <section id="actionsPanel" class="actions-panel is-hidden">
+        <form id="wakeForm" class="pair-form compact-form">
+          <label>
+            <span>MAC do PC</span>
+            <input id="macInput" autocomplete="off" placeholder="AA:BB:CC:DD:EE:FF">
+          </label>
+          <label>
+            <span>Broadcast</span>
+            <input id="broadcastInput" autocomplete="off" inputmode="url" placeholder="255.255.255.255">
+          </label>
+          <label>
+            <span>Porta WOL</span>
+            <input id="wolPortInput" autocomplete="off" inputmode="numeric" placeholder="9">
+          </label>
+          <label>
+            <span>Jogo padrao do modo jogo</span>
+            <select id="defaultGameSelect">
+              <option value="">Escolha um jogo</option>
+            </select>
+          </label>
+          <button type="submit">Salvar Wake-on-LAN</button>
+        </form>
+
+        <div class="action-grid">
+          <button type="button" data-action="wake-pc">Ligar PC</button>
+          <button type="button" data-action="test-wol">Testar Wake-on-LAN</button>
+          <button type="button" data-action="game-mode">Modo jogo</button>
+          <button type="button" data-action="start-stream">Streaming</button>
+          <button type="button" data-action="steam-big-picture">Big Picture</button>
+          <button type="button" data-action="refresh-library">Atualizar biblioteca</button>
+          <button type="button" data-action="lock-pc">Bloquear PC</button>
+          <button type="button" data-action="sleep-pc">Suspender PC</button>
+          <button type="button" data-action="restart-pc" class="danger-action">Reiniciar PC</button>
+          <button type="button" data-action="shutdown-pc" class="danger-action">Desligar PC</button>
+        </div>
+
+        <div class="action-grid volume-grid">
+          <button type="button" data-action="volume-down">Volume -</button>
+          <button type="button" data-action="volume-up">Volume +</button>
+          <button type="button" data-action="volume-mute">Mudo</button>
+        </div>
+
+        <label class="startup-toggle">
+          <input id="startupToggle" type="checkbox">
+          <span>Iniciar Mob Launcher com o Windows</span>
+        </label>
+      </section>
+
+      <section id="diagnosticsPanel" class="diagnostics-panel is-hidden">
+        <article class="diagnostic-row">
+          <span>PC</span>
+          <strong id="diagStatus">Offline</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>Nome</span>
+          <strong id="diagComputer">Nao detectado</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>IP salvo</span>
+          <strong id="diagIp">Nao salvo</strong>
+          <button type="button" data-action="copy-ip">Copiar IP</button>
+        </article>
+        <article class="diagnostic-row">
+          <span>MAC salvo</span>
+          <strong id="diagMac">Nao salvo</strong>
+          <button type="button" data-action="copy-mac">Copiar MAC</button>
+        </article>
+        <article class="diagnostic-row">
+          <span>Ultima conexao</span>
+          <strong id="diagLastConnected">Nunca</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>Ultimo WoL</span>
+          <strong id="diagLastWake">Nunca</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>Biblioteca</span>
+          <strong id="diagLibrary">Nao sincronizada</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>RAM livre</span>
+          <strong id="diagMemory">Nao detectado</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>Discos</span>
+          <strong id="diagDrives">Nao detectado</strong>
+        </article>
+        <article class="diagnostic-row">
+          <span>Launchers</span>
+          <strong id="diagLaunchers">Nao detectado</strong>
+        </article>
+      </section>
+
+      <p id="emptyState" class="empty-state is-hidden">Nenhum item sincronizado ainda.</p>
+      <p id="actionMessage" class="pair-message"></p>
+    </section>
+  </main>
+
+  <script type="module" src="./mobile.js"></script>
+</body>
+</html>

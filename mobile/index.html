@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOB Deck Companion</title>
+  <link rel="stylesheet" href="/mobile.css">
+</head>
+<body>
+  <main class="mobile-shell">
+    <header class="mobile-topbar">
+      <img src="/assets/mobdeck-mark.png" alt="MOB Deck" class="mobile-mark">
+      <div>
+        <p class="mobile-eyebrow">Companion</p>
+        <h1>MOB Deck</h1>
+      </div>
+      <span id="connectionState" class="connection-pill">Offline</span>
+    </header>
+
+    <section id="pairPanel" class="pair-panel">
+      <div>
+        <h2>Parear com o PC</h2>
+        <p>Leia o QR pelo app mobile para confirmar o dispositivo e parear direto.</p>
+      </div>
+      <form id="pairForm" class="pair-form">
+        <button type="submit">Verificar pareamento</button>
+      </form>
+      <p id="pairMessage" class="pair-message"></p>
+    </section>
+
+    <section id="libraryPanel" class="library-panel is-hidden">
+      <div class="library-heading">
+        <div>
+          <p class="mobile-eyebrow">Biblioteca do PC</p>
+          <h2>Jogos</h2>
+        </div>
+        <button id="refreshButton" type="button" class="icon-button" aria-label="Atualizar biblioteca">&#8635;</button>
+      </div>
+
+      <div id="gamesList" class="games-list"></div>
+      <p id="emptyState" class="empty-state is-hidden">Nenhum jogo sincronizado ainda.</p>
+    </section>
+  </main>
+
+  <script src="/mobile.js"></script>
+</body>
+</html>
